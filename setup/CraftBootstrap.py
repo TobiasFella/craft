@@ -211,12 +211,7 @@ def getABI(args):
     elif CraftBootstrap.isAndroid():
         platform = "android"
         compiler = "clang"
-        arch = CraftBootstrap.promptForChoice(
-            "Select target architecture",
-            ["arm32", "arm64", "x86_32", "x86_64"],
-            "arm64",
-            returnDefaultWithoutPrompt=args.use_defaults,
-        )
+        arch = "arm64"
     elif CraftBootstrap.isUnix():
         if CraftBootstrap.isMac():
             platform = "macos"
@@ -278,12 +273,7 @@ def setUp(args):
             returnDefaultWithoutPrompt=args.use_defaults,
         )
 
-    useANSIColor = CraftBootstrap.promptForChoice(
-        "Do you want to enable the support for colored logs",
-        [("Yes", True), ("No", False)],
-        default="Yes",
-        returnDefaultWithoutPrompt=args.use_defaults,
-    )
+    useANSIColor = True
     if useANSIColor:
         CraftBootstrap.enableANSISupport()
 
